@@ -1,0 +1,64 @@
+<div class="header-inner">
+
+  <div class="lms-container">
+
+    <div nz-row [nzGutter]="16">
+      <div nz-col class="gutter-row" nzSpan="6">
+        <div class="inner-box">
+          <div class="app-logo">
+            <h1>
+              <a routerLink=""><img src="./assets/img/logo-lms.png" alt=""></a>
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div nz-col class="gutter-row" nzSpan="18">
+        <div class="inner-box">
+          <div class="navbar-header">
+
+            <div class="header-action">
+
+              <div class="header-account" *ngIf="isSignIn">
+                <button><img src="./assets/img/people.png" alt=""> Admin</button>
+              </div>
+
+              <div class="header-languages">
+                <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="menu" class="value-language">
+                  <img src="./assets/img/en-lang.png" alt=""> {{ language.toLocaleUpperCase() }}
+                  <i nz-icon nzType="caret-down" nzTheme="outline"></i>
+                </a>
+                <nz-dropdown-menu #menu="nzDropdownMenu">
+                  <ul nz-menu>
+                    <li nz-menu-item class="item-language">
+                      <img src="./assets/img/en-lang.png" alt="">EN
+                    </li>
+                    <li nz-menu-item class="item-language">
+                      <img src="./assets/img/en-lang.png" alt="">EN
+                    </li>
+                  </ul>
+                </nz-dropdown-menu>
+              </div>
+
+            </div>
+
+            <app-navigation></app-navigation>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="lms-container">
+    <div nz-row [nzGutter]="16">
+      <div nz-col class="gutter-row" nzOffset="2" nzSpan="22">
+        <div class="slogan">
+          <h2>Loan Management <span>System</span></h2>
+          <p>Easy management, quick debt collection</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,55 @@
+<ng-container
+  *ngIf="paging.totalRecord > 0; then thenTemplate; else elseTemplate"
+></ng-container>
+<ng-template #thenTemplate>
+  <nz-table
+    #basicTable
+    [nzData]="dataTable"
+    [nzTotal]="paging.totalRecord"
+    [nzPageIndex]="paging.pageNumber"
+    [nzPageSize]="paging.pageSize"
+    [nzFrontPagination]="false"
+    [nzShowPagination]="false"
+    [nzNoResult]="'empty_data' | translate"
+  >
+    <thead>
+      <tr>
+        <th>No.</th>
+        <th>Due Date</th>
+        <th>Currency</th>
+        <th>Amount</th>
+        <th>Principal</th>
+        <th>Interest</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data; let i = index">
+        <td>{{ paging.pageSize * paging.pageNumber + (i + 1) }}</td>
+        <td>{{ data.dueDate | timeZone | date:'dd/MM/yyyy'}}</td>
+        <td>{{ data.currency }}</td>
+        <td>{{ data.totalAmount | currencyMoney:true}}</td>
+        <td>{{ data.principalDue | currencyMoney:true }}</td>
+        <td>{{ data.interestDue | currencyMoney:true }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+  <!--
+  uuid(pin):"7bd0e116-c9f2-4827-ace4-c78aa2d24fa8"
+  dueDate(pin):"2021-01-07T23:59:59.999+0000"
+  interestDue(pin):41095.89
+  principalDue(pin):10000000
+  state(pin):"PENDING"
+  totalAmount(pin):10041095.89
+  currency(pin):"VND"
+ -->
+  <app-pagination
+    [total]="paging.totalRecord"
+    [pageNumber]="paging.pageNumber"
+    [pageSize]="paging.pageSize"
+    (onPaginationChange)="onPagination($event)"
+  ></app-pagination>
+</ng-template>
+<ng-template #elseTemplate>
+  <app-empty></app-empty>
+</ng-template>

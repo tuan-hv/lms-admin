@@ -1,0 +1,21 @@
+<ul nz-menu nzMode="inline" nzInlineIndent='0' nzSelectable='false'>
+  <li *ngIf="application?.loanJobInformation" nz-submenu nzTitle="Employment information">
+
+    <div nz-row [nzGutter]="16">
+      <div nz-col nzSpan="8">
+        <label class="gray">Pre-tax income :</label> {{application.loanJobInformation.preTaxIncome | currencyMoney: true}}
+      </div>
+      <div nz-col nzSpan="8">
+        <label class="gray">Expense :</label> {{application.loanJobInformation.expense | currencyMoney: true}}
+      </div>
+      <div nz-col nzSpan="8">
+        <label class="gray">Company :</label> {{application.loanJobInformation.companyName}}
+      </div>
+    </div>
+    <div nz-row [nzGutter]="16">
+      <div nz-col nzSpan="24">
+        <label class="gray">Company address :</label> {{application.loanJobInformation.companyAddress}}
+      </div>
+    </div>
+  </li>
+</ul>

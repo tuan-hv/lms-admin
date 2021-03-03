@@ -1,0 +1,14 @@
+<div class="lms-breadscrumbs">
+  <nz-breadcrumb nzSeparator=">">
+
+    <ng-container *ngFor="let item of breadscrumbs">
+
+      <nz-breadcrumb-item >
+        <a *ngIf="!item.url">{{ item.label }}</a>
+        <a *ngIf="item.url" [routerLink]="['/' + item.url.toString()]">{{ item.label }}</a>
+      </nz-breadcrumb-item>
+
+    </ng-container>
+
+  </nz-breadcrumb>
+</div>

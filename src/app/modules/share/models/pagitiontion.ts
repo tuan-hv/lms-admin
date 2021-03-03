@@ -1,0 +1,1 @@
+export type TPaginationPosition = "center" | "flex-start" | "flex-end";

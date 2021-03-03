@@ -1,0 +1,242 @@
+<div class="loan-account-search-form">
+  <form nz-form [formGroup]="searchForm" (ngSubmit)="submitForm()">
+    <div nz-row [nzGutter]="[8, 8]">
+      <div nz-col nzXs="24" nzMd="6">
+        <nz-form-item>
+          <nz-form-label nzXs="24" nzMd="10" nzFor="loanType" class="loan-account-search-left"
+            >Loan types</nz-form-label
+          >
+          <nz-form-control nzXs="24" nzMd="14">
+            <nz-select class="input-form"
+              id="loanType"
+              formControlName="loanType"
+              nzPlaceHolder="All"
+            >
+              <nz-option nzValue="" nzLabel="All"></nz-option>
+              <nz-option
+                *ngFor="let l of loanTypes"
+                nzValue="{{ l }}"
+                nzLabel="{{ l }}"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzXs="24" nzMd="6">
+        <nz-form-item>
+          <nz-form-label nzXs="24" nzMd="10" nzFor="loan_account"
+          class="loan-account-search-left"
+            >Loan account</nz-form-label
+          >
+          <nz-form-control nzXs="24" nzMd="14">
+            <input class="input-form"
+              nz-input
+              formControlName="loanAccount"
+              id="loan_account"
+              placeHolder="All"
+              maxlength = "20"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzXs="24" nzMd="6">
+        <nz-form-item>
+          <nz-form-label nzXs="24" nzMd="10" nzFor="loanStatus"
+          class="loan-account-search-right"
+            >Loan status</nz-form-label
+          >
+          <nz-form-control nzXs="24" nzMd="14">
+            <nz-select  class="input-form"
+              id="loanStatus"
+              formControlName="status"
+              nzPlaceHolder="All"
+            >
+            <nz-option nzValue="" nzLabel="All"></nz-option>
+              <nz-option
+                *ngFor="let s of loanStatus"
+                nzValue="{{ s }}"
+                nzLabel="{{ status[s].name }}"
+              ></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzXs="24" nzMd="6">
+        <nz-form-item>
+          <nz-form-label nzXs="24" nzMd="10" nzFor="customer"
+          class="loan-account-search-right"
+            >Customer</nz-form-label
+          >
+          <nz-form-control nzXs="24" nzMd="14">
+            <input class="input-form"
+              nz-input
+              formControlName="customerName"
+              id="customer"
+              placeHolder="All"
+              maxlength = "250"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzXs="24" nzMd="6">
+        <nz-form-item>
+          <nz-form-label nzXs="24" nzMd="10" nzFor="cardNumber"
+          class="loan-account-search-left"
+            >ID/Passport No</nz-form-label
+          >
+          <nz-form-control nzXs="24" nzMd="14">
+            <input class="input-form"
+              nz-input
+              formControlName="cardNumber"
+              id="cardNumber"
+              placeHolder="All"
+              maxlength = "50"
+            />
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzXs="24" nzMd="6">
+        <nz-form-item>
+          <nz-form-label nzXs="24" nzMd="10" nzFor="from"
+          class="loan-account-search-left"
+            >Create date from*</nz-form-label
+          >
+          <nz-form-control nzXs="24" nzMd="14">
+            <nz-date-picker
+              id="createFrom"
+              formControlName="createFrom"
+              nzFormat="dd/MM/yyyy"
+              nzPlaceHolder="dd/mm/yyyy"
+              [nzInputReadOnly] = true
+              [nzDisabledDate]="disableFrom"
+              nzAllowClear="false"
+            >
+            </nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+
+      <div nz-col nzXs="24" nzMd="6">
+        <nz-form-item>
+          <nz-form-label nzXs="24" nzMd="10" nzFor="to"
+          class="loan-account-search-right">To*</nz-form-label>
+          <nz-form-control nzXs="24" nzMd="14">
+            <nz-date-picker #endDatePicker
+              id="createTo"
+              formControlName="createTo"
+              nzFormat="dd/MM/yyyy"
+              nzPlaceHolder="dd/mm/yyyy"
+              [nzInputReadOnly] = true
+              [nzDisabledDate]="disableTo"
+              nzAllowClear="false"
+            >
+            </nz-date-picker>
+          </nz-form-control>
+          <label *ngIf="searchForm.errors" class="search-form-datepicker-error">{{ searchForm.errors?.dates }}</label>
+        </nz-form-item>
+      </div>
+
+      <div class="loan-account-search-button" nz-col nzXs="24" nzMd="6">
+        <nz-form-item>
+          <nz-form-control nzSpan="24">
+          <button type="submit" nz-button nzType="primary" [disabled] = "searchForm.invalid">Search</button>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+  <div class="loan-account-clear-button" nz-col nzXs="24" nzMd="6">
+    <nz-form-item>
+      <nz-form-control nzSpan="24">
+      <button nz-button nzType="primary" (click)="onClear()">Clear</button>
+      </nz-form-control>
+    </nz-form-item>
+  </div>
+</div>
+
+<div [hidden]="dataTable.length === 0">
+  <div class="loan-account-list">
+    <nz-table
+      #basicTable
+      [nzData]="dataTable"
+      [nzTotal]="paging.totalRecord"
+      [nzPageIndex]="paging.pageNumber"
+      [nzPageSize]="paging.pageSize"
+      [nzFrontPagination]="false"
+      [nzShowPagination]="false"
+    >
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Loan Type</th>
+          <th>Status</th>
+          <th>Loan Account</th>
+          <th>Create Date</th>
+          <th>ID/Passport No.</th>
+          <th>Customer Name</th>
+          <th>Currency</th>
+          <th>Amount</th>
+          <th>Term</th>
+          <th>Rate</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let data of basicTable.data; let i = index">
+        <tr (dblclick)="dbClickRouterLoanInfo(data.uuid)">
+          <td>{{ paging.pageSize * paging.pageNumber + (i + 1) }}</td>
+          <td>{{ data.loanType }}</td>
+          <td
+            [style.color]="status[data.status].color"
+            [ngStyle]="{ 'font-weight': 900 }"
+          >
+            {{ status[data.status].name }}
+          </td>
+          <td>{{ data.loanAccount }}</td>
+          <td>{{ data.createdDate | timeZone | date: "dd/MM/yyyy" }}</td>
+          <td>{{ data.customerId }}</td>
+          <td class="loan-account-customername"
+          nzTooltipPlacement="bottom" nz-tooltip
+          [nzTooltipTrigger]="data.customerName?.length > 20 ? 'hover' : null"
+          [nzTooltipTitle]="data.customerName">
+          {{ data.customerName }}</td>
+          <td>{{ data.currency }}</td>
+          <td>{{ data.amount | currencyMoney }}</td>
+          <td>{{ data.term | term:data.termUnit }} </td>
+          <td>{{ data.rate | percent }}</td>
+          <td class="action">
+            <a nzTooltipTitle="View" nzTooltipPlacement="bottom" nz-tooltip
+              [routerLink]="['/loan-account/detail/', data.uuid]">
+              <img src="{{iconView}}" />
+            </a>
+            <a nzTooltipTitle="Disbursement" nzTooltipPlacement="bottom" nz-tooltip
+              [routerLink]="['/loan-account/disbursement/', data.uuid]"
+              [attr.disabled]="data.status == 3 ? null : true"
+            >
+              <img
+                src="{{data.status == 3 ? iconDisbursementActive : iconDisbursement }}"
+              />
+            </a>
+            <a nzTooltipTitle="Repayment" nzTooltipPlacement="bottom" nz-tooltip
+             href="#" [attr.disabled]="data.status == 4 ? null : true">
+              <img
+                src="{{ data.status == 4 ? iconPaymentActive : iconPayment }}"
+              />
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <app-pagination
+    [total]="paging.totalRecord"
+    [pageNumber]="paging.pageNumber"
+    [pageSize]="paging.pageSize"
+    (onPaginationChange)="onPagination($event)"
+  ></app-pagination>
+</div>
+<div class="loan-account-search-message" [hidden]="dataTable.length !== 0">No matching results</div>

@@ -1,0 +1,22 @@
+<div class="lms-pagination">
+
+  <div>
+    Record per page
+    <select (change)="sizeChange($event.target.value)" [(ngModel)] = "pageSize">
+      <option *ngFor="let i of records" [value]="i">{{i}}</option>
+    </select>
+  </div>
+
+  <pagination
+    [totalItems]="total"
+    [itemsPerPage]="pageSize"
+    [(ngModel)]="clientPage"
+    [maxSize]="6"
+    boundaryLinks="true"
+    previousText="<"
+    nextText=">"
+    firstText="<<"
+    lastText=">>"
+    (pageChanged)="pageChange($event)"
+  ></pagination>
+</div>

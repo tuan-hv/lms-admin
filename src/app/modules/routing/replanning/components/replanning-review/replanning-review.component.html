@@ -1,0 +1,53 @@
+<app-breadscrumb></app-breadscrumb>
+
+<nz-steps [nzCurrent]="current">
+  <nz-step ></nz-step>
+  <nz-step ></nz-step>
+  <nz-step ></nz-step>
+</nz-steps>
+
+<div class="replan-information">
+  <ng-container *ngIf="application$ | async as application">
+    <app-loan-information [application] = "application"></app-loan-information>
+  </ng-container>
+</div>
+
+<div class="replan-information">
+  <app-replan-information></app-replan-information>
+</div>
+
+<div class="replan-information">
+  <div>Document attach</div>
+  <div nz-row nzJustify="space-around">
+    <div nz-col nzSpan="5">
+      <div>
+        <label>Finance documnet</label>
+      </div>
+      <div>
+        <p>file1.pdf</p>
+        <p>file2.pdf</p>
+        <p>file3.pdf</p>
+      </div>
+    </div>
+    <div nz-col nzSpan="17">
+      <div>
+        <label>Valid document </label>
+      </div>
+    </div>
+</div>
+</div>
+
+<div class="steps-action">
+  <button nz-button nzType="default" (click)="pre()" [attr.disables]="current > 0">
+    <span>Back</span>
+  </button>
+  <button nz-button nzType="default" (click)="next()">
+    <span>Add doc.</span>
+  </button>
+  <button nz-button nzType="default" (click)="next()">
+    <span>Reject</span>
+  </button>
+  <button nz-button nzType="primary" (click)="done()">
+    <span>Approve</span>
+  </button>
+</div>

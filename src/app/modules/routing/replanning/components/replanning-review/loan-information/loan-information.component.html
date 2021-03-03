@@ -1,0 +1,31 @@
+<div>Loan Infomation</div>
+<div *ngIf="application?.loanPersonalInformation.length > 0" nz-row nzJustify="space-around">
+  <div nz-col nzSpan="11">
+    <div>
+      <label>Loan account: </label>
+    </div>
+    <div>
+    <label>Loan type: </label>
+    </div>
+    <div>
+     <label>Customer name: </label>
+    </div>
+    <div>
+      <label>Times of overdue repayments: </label>
+    </div>
+  </div>
+  <div nz-col nzSpan="11">
+    <div>
+      <label>Address: </label> {{application.loanPersonalInformation.address}}
+    </div>
+    <div>
+      <label>Outstanding balance: </label>
+    </div>
+    <div>
+      <label>Expiry date currency: </label>
+    </div>
+    <div>
+      <label>Rate currency: </label>
+    </div>
+  </div>
+</div>

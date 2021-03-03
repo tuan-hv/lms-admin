@@ -1,0 +1,23 @@
+@import 'src/styles/variables';
+
+.logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  height: 50px;
+  border-bottom: 1px solid #777;
+
+  a {
+    color: #fff;
+    font-size: 22px;
+  }
+}
+
+.list-items {
+  a {
+    display: block;
+    color: #fff;
+    padding: 5px 10px;
+  }
+}

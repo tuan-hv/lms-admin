@@ -1,0 +1,187 @@
+<app-breadscrumb></app-breadscrumb>
+
+<app-application-detail viewType="DISBURSEMENT"></app-application-detail>
+<div class="button-footer">
+  <!-- <button nz-button class="btn-back" nzSize="large" (click)="back()">
+    Back
+  </button> -->
+  <app-back-button></app-back-button>
+
+  <ng-container *ngIf="application$ | async as application">
+      <button
+        nz-button
+        [nzType]="'primary'"
+        nzSize="large"
+        (click)="showModal()"
+        *ngIf="application.loanStatus === 3"
+      >
+        Disbursement
+      </button>
+  </ng-container>
+
+  <nz-modal
+    [(nzVisible)]="isVisible"
+    (nzOnCancel)="handleCancel()"
+    [nzFooter]="null"
+    nzWidth="400px"
+    [nzMaskClosable]="false"
+  >
+  <ng-container>
+      <div [ngSwitch]="pageStatus" class="otp-dialog border">
+        <div *ngSwitchCase="pageStatusType.CONFIRMED" class="otp-body">
+
+          <div nz-row class="text-center">
+            <div nz-col nzSpan="24">
+              <svg width="126" height="126" viewBox="0 0 126 126" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100.8 89.2494C108.919 89.2494 115.5 82.6681 115.5 74.5495C115.5 66.431 108.919 59.8496 100.8 59.8496C92.6815 59.8496 86.1001 66.431 86.1001 74.5495C86.1001 82.6681 92.6815 89.2494 100.8 89.2494Z"
+                fill="#FDB62F"/>
+                <path d="M65.1002 15.75H60.9001V55.6499H65.1002V15.75Z" fill="#6B962A"/>
+                <path d="M63.0001 15.7497H58.8C50.6814 15.7497 44.1001 9.16844 44.1001 1.0498H48.3002C56.4188 1.0498 63.0001 7.63109 63.0001 15.7497Z"
+                fill="#88B337"/>
+                <path d="M73.5002 64.0498H44.1001V72.4497H73.5002V64.0498Z" fill="#FFA83D"/>
+                <path d="M77.7001 72.4502H48.3V80.8501H77.7001V72.4502Z" fill="#FDB62F"/>
+                <path d="M73.5002 80.8496H44.1001V89.2495H73.5002V80.8496Z" fill="#FFA83D"/>
+                <path d="M77.7001 89.25H48.3V97.6499H77.7001V89.25Z" fill="#FDB62F"/>
+                <path d="M77.7001 97.6504H48.3V106.05H77.7001V97.6504Z" fill="#FFA83D"/>
+                <path d="M81.9001 106.05H52.5V114.45H81.9001V106.05Z" fill="#FDB62F"/>
+                <path d="M77.7001 114.45H48.3V122.85H77.7001V114.45Z" fill="#FFA83D"/>
+                <path d="M37.8 22.0498H42.0001C53.5985 22.0498 63.0001 31.4516 63.0001 43.0497H58.8C47.2018 43.0497 37.8 33.6482 37.8 22.0498Z"
+                fill="#88B337"/>
+                <path d="M81.9 1.0498H77.6999C69.5813 1.0498 63 7.63109 63 15.7497H67.2001C75.3187 15.7497 81.9 9.16844 81.9 1.0498Z"
+                fill="#6B962A"/>
+                <path d="M67.2001 43.0497H63C63 31.4513 72.4018 22.0498 83.9999 22.0498H88.2C88.2 33.6482 78.7982 43.0497 67.2001 43.0497Z"
+                fill="#6B962A"/>
+                <path d="M35.7001 80.8496H6.30005V89.2495H35.7001V80.8496Z" fill="#FDB62F"/>
+                <path d="M35.7001 89.25H6.30005V97.6499H35.7001V89.25Z" fill="#FFA83D"/>
+                <path d="M39.9001 97.6504H10.5V106.05H39.9001V97.6504Z" fill="#FDB62F"/>
+                <path d="M35.7001 106.05H6.30005V114.45H35.7001V106.05Z" fill="#FFA83D"/>
+                <path d="M39.9001 114.45H10.5V122.85H39.9001V114.45Z" fill="#FDB62F"/>
+                <path d="M115.5 89.25H86.1001V97.6499H115.5V89.25Z" fill="#FDB62F"/>
+                <path d="M119.7 97.6504H90.2998V106.05H119.7V97.6504Z" fill="#FFA83D"/>
+                <path d="M119.7 106.05H90.2998V114.45H119.7V106.05Z" fill="#FDB62F"/>
+                <path d="M119.7 114.45H90.2998V122.85H119.7V114.45Z" fill="#FFA83D"/>
+                <path d="M100.8 82.9502C105.439 82.9502 109.2 79.1895 109.2 74.5503C109.2 69.9112 105.439 66.1504 100.8 66.1504C96.1607 66.1504 92.3999 69.9112 92.3999 74.5503C92.3999 79.1895 96.1607 82.9502 100.8 82.9502Z"
+                fill="#FFA83D"/>
+                <path d="M100.8 82.9509V78.7509C103.12 78.7509 105 76.8714 105 74.5508H109.2C109.2 79.1896 105.439 82.9509 100.8 82.9509Z"
+                fill="#FD7B2F"/>
+                <path d="M96.6 74.5503H92.3999C92.3999 69.9114 96.161 66.1504 100.8 66.1504V70.3505C98.4797 70.3505 96.6 72.2299 96.6 74.5503Z"
+                fill="#FD7B2F"/>
+                <path d="M105 22.0498C104.286 17.7407 100.909 14.3638 96.6003 13.6499C100.909 12.936 104.286 9.5591 105 5.25C105.714 9.5591 109.091 12.936 113.4 13.6499C109.091 14.3638 105.714 17.7407 105 22.0498Z"
+                fill="#FDB62F"/>
+                <path d="M21 68.25C20.2861 63.9409 16.9092 60.564 12.6001 59.8501C16.9092 59.1362 20.2861 55.7593 21 51.4502C21.7139 55.7593 25.0908 59.1362 29.3999 59.8501C25.0908 60.564 21.7142 63.9409 21 68.25Z"
+                fill="#FDB62F"/>
+                <path d="M77.7004 55.6494H48.3003V64.0493H77.7004V55.6494Z" fill="#FDB62F"/>
+                <path d="M126 49.3498H119.7V43.0498H115.5V49.3498H109.2V53.5499H115.5V59.8499H119.7V53.5499H126V49.3498Z"
+                fill="#FDB62F"/>
+                <path d="M126 120.75H0V124.95H126V120.75Z" fill="#DBDBDB"/>
+                <path d="M42.0001 49.3503C35.0409 49.3503 29.4001 43.7096 29.4001 36.7503V34.6504H33.6002V36.7503C33.6002 41.3892 37.3613 45.1502 42.0001 45.1502V49.3503Z"
+                fill="#DBDBDB"/>
+                </svg>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="24"><p class="p-3 h5 font-weight-bold text-center result-text">Successful disbursement</p></div>
+          </div>
+          <div nz-row class="text-center">
+            <div nz-col nzSpan="24">
+              <button (click)="handleSkip($event)" nz-button [nzType]="'primary'" style="width: 80px;">OK</button></div>
+          </div>
+
+
+        </div>
+        <div *ngSwitchCase="pageStatusType.FAILED" class="otp-body">
+
+          <div nz-row class="text-center">
+            <div nz-col nzSpan="24">
+              <svg width="95" height="100" viewBox="0 0 95 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M47.5 40C50.1234 40 52.25 42.2386 52.25 45V75C52.25 77.7614 50.1234 80 47.5 80C44.8766 80 42.75 77.7614 42.75 75V45C42.75 42.2386 44.8766 40 47.5 40Z" fill="#FFA83D"></path>
+                <path d="M47.5 30C50.1234 30 52.25 27.7614 52.25 25C52.25 22.2386 50.1234 20 47.5 20C44.8766 20 42.75 22.2386 42.75 25C42.75 27.7614 44.8766 30 47.5 30Z" fill="#FFA83D"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M47.5 100C73.7335 100 95 77.6142 95 50C95 22.3858 73.7335 0 47.5 0C21.2665 0 0 22.3858 0 50C0 77.6142 21.2665 100 47.5 100ZM47.5 90C68.4868 90 85.5 72.0914 85.5 50C85.5 27.9086 68.4868 10 47.5 10C26.5132 10 9.5 27.9086 9.5 50C9.5 72.0914 26.5132 90 47.5 90Z" fill="#FFA83D"></path>
+            </svg>
+            </div>
+          </div>
+          <div nz-row>
+            <div nz-col nzSpan="24"><p class="p-3 h5 font-weight-bold text-center result-text">Failed Disbursement !({{error}})</p></div>
+          </div>
+          <div nz-row class="text-center">
+            <div nz-col nzSpan="24">
+              <button (click)="handleSkip($event)" nz-button [nzType]="'primary'" style="width: 80px;">OK</button>
+            </div>
+          </div>
+        </div>
+        <div *ngSwitchCase="pageStatusType.INIT" class="init">
+          <div class="otp-body">
+            <div nz-row class="text-center">
+              <div nz-col nzSpan="24" class="h4 font-weight-bold">
+                Validate OTP
+              </div>
+            </div>
+
+            <div nz-row class="py-3">
+              <div nz-col nzSpan="24">
+                OTP has been sent to you on your mobile number, please enter it
+                below to register
+              </div>
+            </div>
+
+            <div nz-row class="py-3">
+              <div nz-col nzSpan="18">
+                <div nz-row>
+                  <div nz-col nzSpan="24">Enter OTP</div>
+                </div>
+                <div nz-row>
+                  <div nz-col nzSpan="24">
+                    <form #otpForm="ngForm" (ngSubmit)="onSubmit()">
+                      <input id="otpField" name="otpField" required class="otp-input" [(ngModel)]="otp" #otpField="ngModel" >
+                      <div *ngIf="otpField.invalid && (otpField.dirty || otpField.touched)" class="text-danger">
+                      <div *ngIf="otpField.errors.required">
+                        Otp is required.
+                      </div>
+
+                      <div *ngIf="error">
+                          {{error}}
+                      </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div nz-col nzSpan="6">
+                <div class="timer border rounded-circle text-center">
+                  <ng-container *ngIf="num > 0; else resendTmpl">
+                    {{ num }}
+                  </ng-container>
+                  <ng-template #resendTmpl>
+                    <a name="" id="otpSkip" (click)="handleResend($event)"
+                      >Resend</a
+                    >
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div nz-row class="otp-bottom">
+            <div nz-col nzSpan="12" class="border-top border-right text-center">
+              <a
+                name=""
+                id="otpSkip"
+                (click)="handleSkip($event)"
+                class="h5 btn-center"
+                >Skip</a
+              >
+            </div>
+            <div nz-col nzSpan="12" class="border-top text-center">
+              <a
+                name=""
+                id="otpConfirm"
+                (click)="handleConfirm($event)"
+                class="font-weight-bold h5 btn-center"
+                >Confirm</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </nz-modal>
+</div>

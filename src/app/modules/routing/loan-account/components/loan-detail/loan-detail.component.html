@@ -1,0 +1,17 @@
+<app-application-detail viewType="LOAN_DETAIL"></app-application-detail>
+
+<ng-container *ngIf="application$ | async as application">
+  <app-person-info [application] = "application"></app-person-info>
+</ng-container>
+
+<!--  -->
+
+<ng-container *ngIf="application$ | async as application">
+  <app-ref-info [application] = "application"></app-ref-info>
+</ng-container>
+
+<!--  -->
+
+<ng-container *ngIf="application$ | async as application">
+  <app-emp-info [application] = "application"></app-emp-info>
+</ng-container>

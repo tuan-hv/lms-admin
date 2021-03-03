@@ -1,0 +1,26 @@
+<ul nz-menu nzMode="inline" nzInlineIndent='0' nzSelectable='false'>
+  <li *ngIf="application?.loanPersonalInformation.length > 0" nz-submenu nzTitle="Personal information">
+
+    <div nz-row  [nzGutter]="16">
+      <div nz-col nzSpan="8">
+        <label class="gray">Name :</label> {{application.loanPersonalInformation[0].fullName}}
+      </div>
+      <div nz-col nzSpan="8">
+        <label class="gray">Phone :</label> {{application.loanPersonalInformation[0].phoneNumber}}
+      </div>
+      <div nz-col nzSpan="8">
+        <label class="gray">Date Of birth :</label> {{application.loanPersonalInformation[0].dateOfBirth| timeZone | date:'dd/MM/yyyy'}}
+      </div>
+    </div>
+    <div nz-row  [nzGutter]="16">
+      <div nz-col nzSpan="8">
+        <label class="gray">Email :</label> {{application.loanPersonalInformation[0].emailAddress}}
+      </div>
+      <div nz-col nzSpan="16">
+        <label class="gray">Address :</label> {{application.loanPersonalInformation[0].address}}
+      </div>
+    </div>
+
+
+  </li>
+</ul>

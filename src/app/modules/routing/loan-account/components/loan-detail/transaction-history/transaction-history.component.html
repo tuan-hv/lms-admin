@@ -1,0 +1,79 @@
+<div class="search-area">
+  <form nz-form [formGroup]="filterForm" (ngSubmit)="submitForm()">
+    <div nz-row [nzGutter]="[8, 8]">
+      <div nz-col nzXs="24" nzMd="6">
+        <nz-form-item>
+          <nz-form-label nzXs="24" nzMd="10" nzFor="from">From</nz-form-label>
+          <nz-form-control nzXs="24" nzMd="14" nzErrorTip="The date cannot be empty">
+            <nz-date-picker id="from"
+            formControlName="fromDate"
+            nzFormat="dd/MM/yyyy"
+            nzPlaceHolder="dd/mm/yyyy"
+            ></nz-date-picker>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+      <div nz-col nzXs="24" nzMd="6">
+        <nz-form-item>
+          <nz-form-label nzXs="24" nzMd="10" nzFor="to">To</nz-form-label>
+          <nz-form-control nzXs="24" nzMd="14" nzErrorTip="The date cannot be empty">
+            <nz-date-picker #to
+            formControlName="toDate"
+            nzFormat="dd/MM/yyyy"
+            nzPlaceHolder="dd/mm/yyyy"
+            ></nz-date-picker>
+          </nz-form-control>
+          <label *ngIf="filterForm.errors" class="search-form-datepicker-error">{{ filterForm.errors?.dates }}</label>
+        </nz-form-item>
+      </div>
+      <div nz-col nzXs="24" nzMd="6" [nzPush]="2">
+        <nz-form-item>
+          <nz-form-control nzSpan="24">
+            <button type="submit" nz-button nzType="primary" [disabled]='filterForm.invalid'>Search</button>
+          </nz-form-control>
+        </nz-form-item>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="result-area" [hidden]="transHistoryList.length === 0">
+  <nz-table [nzData]="transHistoryList" [nzTotal]="paging.totalRecord"
+            [nzPageIndex]="paging.pageNumber" [nzPageSize]="paging.pageSize" [nzFrontPagination]="false"
+            [nzShowPagination]="false">
+    <thead>
+    <tr>
+      <th>No.</th>
+      <th>Transaction date</th>
+      <th>Type</th>
+      <th>Currency</th>
+      <th>Amount</th>
+      <th>Principle</th>
+      <th>Interest</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let trans of transHistoryList; let i = index">
+      <td>{{ paging.pageSize * paging.pageNumber + (i + 1) }}</td>
+      <td>{{ trans.creationDate | timeZone | date:'dd/MM/yyyy' }}</td>
+      <td>{{ trans.type}}</td>
+      <td>{{ showTransactionCurrency() }}</td>
+      <td>{{ showAmount(trans) | currencyMoney}}</td>
+      <td>{{ (trans.principalAmount ? trans.principalAmount : 0)  | currencyMoney}}</td>
+      <td>{{ (trans.interestAmount ? trans.interestAmount : 0) | currencyMoney}}</td>
+    </tr>
+    </tbody>
+  </nz-table>
+
+  <app-pagination
+    [total]="paging.totalRecord"
+    [pageNumber]="paging.pageNumber"
+    [pageSize]="paging.pageSize"
+    (onPaginationChange)="onPagination($event)"
+  ></app-pagination>
+</div>
+
+<div class="empty-result" [hidden]="transHistoryList.length !== 0">
+  <app-empty></app-empty>
+</div>
+

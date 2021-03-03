@@ -1,0 +1,18 @@
+<app-breadscrumb></app-breadscrumb>
+<nz-tabset nzSize="large" #tabs [nzCentered]="true">
+  <nz-tab nzTitle="Information">
+    <app-loan-detail></app-loan-detail>
+  </nz-tab>
+  <nz-tab nzTitle="Transaction history">
+    <trans-history (onTabChange)="switchTab($event)"></trans-history>
+  </nz-tab>
+  <nz-tab nzTitle="Replan History">
+    <replan-history></replan-history>
+  </nz-tab>
+  <nz-tab nzTitle="Repayment schedule">
+    <app-payment-schedule></app-payment-schedule>
+  </nz-tab>
+</nz-tabset>
+<div class="text-center p-3">
+  <app-back-button></app-back-button>
+</div>

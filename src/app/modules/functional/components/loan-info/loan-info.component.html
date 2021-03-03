@@ -1,0 +1,50 @@
+<app-info-title
+  [title]="'Loan information'"
+  [containerStyle]="'column-header'"
+></app-info-title>
+
+<div *ngIf="'LOAN_DETAIL' === viewType" class="border-right">
+  <acc-num [app]="application"></acc-num>
+
+  <ln-amnt [app]="application"></ln-amnt>
+
+  <ln-curr [app]="application"></ln-curr>
+
+  <ost-blanc [app]="application"></ost-blanc>
+
+  <ist-due [app]="application"></ist-due>
+
+  <ln-rate [app]="application"></ln-rate>
+
+  <ln-type [app]="application"></ln-type>
+
+  <ln-term [app]="application"></ln-term>
+
+  <ln-pay-freq [app]="application"></ln-pay-freq>
+
+  <ln-status [app]="application"></ln-status>
+
+  <ln-exp-date [app]="application"></ln-exp-date>
+</div>
+
+<div *ngIf="'DISBURSEMENT' === viewType" class="border-right">
+  <acc-num [app]="application" [label]="'Loan account :'"></acc-num>
+
+  <ln-per-name [app]="application"></ln-per-name>
+
+  <ln-curr [app]="application"></ln-curr>
+
+  <ln-amnt [app]="application"></ln-amnt>
+
+  <ln-rate [app]="application"></ln-rate>
+
+  <ln-type [app]="application"></ln-type>
+
+  <ln-term [app]="application"></ln-term>
+
+  <ln-status [app]="application"></ln-status>
+
+  <ln-sgnoff-date [app]="application"></ln-sgnoff-date>
+
+  <ln-cre-date [app]="application"></ln-cre-date>
+</div>

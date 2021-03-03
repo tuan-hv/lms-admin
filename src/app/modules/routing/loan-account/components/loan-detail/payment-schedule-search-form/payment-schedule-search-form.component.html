@@ -1,0 +1,32 @@
+<form nz-form [nzLayout]="validateForm.get('formLayout')?.value" [formGroup]="validateForm" (ngSubmit)="submitForm()">
+  <nz-form-item>
+    <nz-form-label>From</nz-form-label>
+    <nz-form-control nzErrorTip="From Date is required">
+      <nz-date-picker
+      formControlName="fromDate"
+      nzFormat="dd/MM/yyyy"
+      nzPlaceHolder="dd/MM/yyyy"
+      nzAllowClear="false"
+      ></nz-date-picker>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label>To</nz-form-label>
+    <nz-form-control nzErrorTip="To Date is required">
+      <nz-date-picker #endDatePicker
+      formControlName="toDate"
+      nzFormat="dd/MM/yyyy"
+      nzPlaceHolder="dd/MM/yyyy"
+      nzAllowClear="false"
+      ></nz-date-picker>
+    </nz-form-control>
+    <label *ngIf="validateForm.errors" class="search-form-datepicker-error">{{ validateForm.errors?.dates }}</label>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button nzType="primary" [disabled]='validateForm.invalid'>Search</button>
+    </nz-form-control>
+  </nz-form-item>
+
+</form>

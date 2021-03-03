@@ -1,0 +1,20 @@
+<div *ngIf="application$ | async as application" class="application-detail">
+  <div nz-row [nzGutter]="16">
+    <div nz-col nzSpan="12">
+      <app-loan-info
+        [viewType]="viewType"
+        [application]="application"
+      ></app-loan-info>
+    </div>
+    <div nz-col nzSpan="2">
+    </div>
+    <div *ngIf="beneficiary$ | async as beneficiary" nz-col nzSpan="10">
+      <app-disbursement-info
+        [viewType]="viewType"
+        [application]="application"
+        [beneficiary]="beneficiary"
+      ></app-disbursement-info>
+    </div>
+
+  </div>
+</div>

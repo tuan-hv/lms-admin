@@ -1,0 +1,41 @@
+@import 'src/styles/variables';
+
+.lms-pagination {
+  width: 100%;
+  position: relative;
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+  padding: 0px;
+
+  ::ng-deep li,
+  ::ng-deep button {
+    border: none;
+  }
+
+  ::ng-deep .pagination {
+    margin: 0;
+    
+    li {
+      &.active {
+        a {
+          background: none;
+          color: $secondary;
+        }
+      }
+      a {
+        &:hover {
+          background: none;
+          color: $secondary;
+        }
+
+        padding: 5px;
+        border: none;
+        color: $text-dark;
+        font-weight: bold;
+        font-size: 16px;
+      }
+    }
+  }
+}

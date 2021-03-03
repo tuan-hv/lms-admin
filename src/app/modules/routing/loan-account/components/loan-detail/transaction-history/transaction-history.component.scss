@@ -1,0 +1,38 @@
+.pagination {
+    width: auto;
+
+    nz-select {
+        width: 70px;
+    }
+
+    ::ng-deep ul.pagination {
+        margin: 0px 0px 0px 5px;
+    }
+}
+
+.result-area {
+    ::ng-deep table thead th {
+        font-weight: bold;
+    }
+}
+
+.search-form-datepicker-error{
+  color: red;
+  margin: 3px -55px;
+}
+
+.loan-account-search-message{
+  font-weight: 400;
+  font-size: 18px !important;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin: 40px;
+}
+
+::ng-deep .ant-form-item-explain.ant-form-item-explain-error.ng-star-inserted {
+  font-size: 12px !important;
+}
+
+app-pagination {
+    width: 100%;
+}

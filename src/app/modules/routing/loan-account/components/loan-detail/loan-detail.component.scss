@@ -1,0 +1,29 @@
+
+::ng-deep {
+  .ant-menu-item:hover,
+  .ant-menu-item-active,
+  .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+  .ant-menu-submenu-active,
+  .ant-menu-submenu-title:hover {
+    color: #000;
+  }
+
+  .ant-menu-inline, .ant-menu-vertical, .ant-menu-vertical-left {
+    border: none;
+  }
+  span.ng-star-inserted {
+    font-weight: bold;
+  }
+
+  .ant-col-8, .ant-col-16 {
+    line-height: 3.4em;
+  }
+
+  .ant-menu-submenu-inline > .ant-menu-submenu-title .ant-menu-submenu-arrow {
+    margin: 0px 0px 0px 5px;
+    right: auto;
+  }
+}
+
+
+

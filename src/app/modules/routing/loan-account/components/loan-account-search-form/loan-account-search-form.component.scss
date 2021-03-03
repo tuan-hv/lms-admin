@@ -1,0 +1,140 @@
+::ng-deep label {
+  font-weight: 700;
+  font-size: 12px !important;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+}
+
+.loan-account-search-form nz-form-item.ant-form-item.ant-row {
+  margin-right: -2px;
+}
+
+.loan-account-search-form nz-form-control {
+  margin-left: 3px;
+}
+
+.loan-account-list {
+  overflow: auto;
+  margin: 40px 0 20px;
+
+  > nz-table {
+    min-width: 1000px;
+  }
+
+  ::ng-deep table {
+    thead {
+      tr {
+        th {
+          font-weight: 700;
+          text-align: center;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          text-align: center;
+          border-bottom: 1px solid rgb(0, 0, 0);
+          cursor: pointer;
+          a {
+              margin: 0px 2px;
+          }
+
+        }
+        .loan-account-customername{
+          // text-align: left !important;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 120px;
+          height: 48px;
+          padding: 0px 6px !important;
+        }
+        td:last-child {
+          cursor: auto !important
+        }
+      }
+      tr:hover{
+        color: #FBBC05;
+      }
+      font-size: 12px !important;
+    }
+    .action {
+      button {
+        margin: 0 5px;
+      }
+    }
+  }
+}
+
+.loan-account-search-form{
+  position: relative;
+  margin-bottom: 60px;
+  ::-webkit-input-placeholder, nz-form-control {
+    font-style: italic;
+ }
+}
+.loan-account-search-button{
+  margin: 25px 0px;
+  position: absolute;
+  top: 100%;
+  left: 40%;
+  transform: translate(-50%, -50%);
+}
+
+.loan-account-clear-button{
+  margin: 25px 0px;
+  position: absolute;
+  top: 100%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.loan-account-search-left{
+  text-align: left!important
+}
+
+.loan-account-search-right{
+  text-align: right!important
+}
+
+.loan-account-search-message{
+  font-weight: 400;
+  font-size: 18px !important;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin-top: 100px;
+}
+
+.search-form-datepicker-error{
+  color: red;
+  margin: 3px -55px;
+}
+
+::ng-deep .ant-tooltip-inner {
+  color: rgb(0, 0, 0);
+  background-color: #F1F3A6;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  border: 1px solid black;
+}
+::ng-deep .ant-tooltip-placement-bottom .ant-tooltip-arrow, .ant-tooltip-placement-bottomLeft .ant-tooltip-arrow, .ant-tooltip-placement-bottomRight .ant-tooltip-arrow {
+  display: none;
+}
+::ng-deep .ant-input {
+  padding: 4px 5px !important
+}
+::ng-deep nz-select-item.ant-select-selection-item {
+  margin: 0px -6px;
+}
+
+::ng-deep.input-form{
+  font-size: 12px;
+}
+
+

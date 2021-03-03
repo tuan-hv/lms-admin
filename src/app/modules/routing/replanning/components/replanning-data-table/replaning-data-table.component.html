@@ -1,0 +1,76 @@
+<div [hidden]="dataTable.length === 0">
+  <div class="loan-account-list">
+    <nz-table
+      #basicTable
+      [nzData]="dataTable"
+      [nzTotal]="paging.totalRecord"
+      [nzPageIndex]="paging.pageNumber"
+      [nzPageSize]="paging.pageSize"
+      [nzFrontPagination]="false"
+      [nzShowPagination]="false"
+    >
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Loan Type</th>
+          <th>Status</th>
+          <th>Loan Account</th>
+          <th>Approve Due Date</th>
+          <th>ID/Passport No.</th>
+          <th>Customer Name</th>
+          <th>Currency</th>
+          <th>Amount</th>
+          <th>Term</th>
+          <th>Outstanding balance</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let data of basicTable.data; let i = index">
+        <tr (dblclick)="dbClickRouterLoanInfo(data.uuid)">
+          <td>{{ paging.pageSize * paging.pageNumber + (i + 1) }}</td>
+          <td>{{ data.loanType }}</td>
+          <td>{{ status[data.status].name }}</td>
+          <td>{{ data.loanAccount }}</td>
+          <td>{{ data.approveDueDate | timeZone | date: "dd/MM/yyyy" }}</td>
+          <td>{{ data.customerId }}</td>
+          <td class="loan-account-customername"
+          nzTooltipPlacement="bottom" nz-tooltip
+          [nzTooltipTrigger]="data.customerName?.length > 20 ? 'hover' : null"
+          [nzTooltipTitle]="data.customerName">
+          {{ data.customerName }}</td>
+          <td>{{ data.currency }}</td>
+          <td>{{ data.amount | currencyMoney }}</td>
+          <td>{{ data.term | term:data.termUnit }} </td>
+          <td>{{ data.outstandingBalance | currencyMoney }}</td>
+          <td class="action">
+            <a nzTooltipTitle="View" nzTooltipPlacement="bottom" nz-tooltip
+              [routerLink]="['/loan-account/detail/', data.uuid]">
+              <img src="{{iconView}}" />
+            </a>
+            <a nzTooltipTitle="Replanning" nzTooltipPlacement="bottom" nz-tooltip
+              [routerLink]="['/replanning/review/', data.uuid]"
+              [attr.disabled]="data.status == 2 ? null : true"
+            >
+              <img
+                src="{{data.status == 2 ? iconReviewActive : iconReview }}"
+              />
+            </a>
+            <a nzTooltipTitle="Repayment" nzTooltipPlacement="bottom" nz-tooltip
+             href="#" [attr.disabled]="data.status == 3 ? null : true">
+              <img
+                src="{{ data.status == 3 ? iconApproveActive : iconApprove }}"
+              />
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <app-pagination
+    [total]="paging.totalRecord"
+    [pageNumber]="paging.pageNumber"
+    [pageSize]="paging.pageSize"
+    (onPaginationChange)="onPagination($event)"
+  ></app-pagination>
+</div>
+<div class="loan-account-search-message" [hidden]="dataTable.length !== 0">No matching results</div>

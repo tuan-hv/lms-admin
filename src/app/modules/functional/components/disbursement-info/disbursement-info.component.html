@@ -1,0 +1,20 @@
+<app-info-title [title]="'Disbursement information'" [containerStyle]="'column-header'"
+                [titleStyle]="'disbursement-title'"></app-info-title>
+
+<div *ngIf="'DISBURSEMENT' === viewType">
+  <be-bank [be]="beneficiary"></be-bank>
+  <be-acc [be]="beneficiary"></be-acc>
+  <be-name [be]="beneficiary"></be-name>
+  <be-method [app]="application"></be-method>
+
+</div>
+
+<div *ngIf="'LOAN_DETAIL' === viewType">
+  <be-bank [be]="beneficiary"></be-bank>
+  <be-acc [be]="beneficiary"></be-acc>
+  <be-name [be]="beneficiary"></be-name>
+  <ln-dis-info [app]="application"></ln-dis-info>
+  <ln-dis-date [app]="application"></ln-dis-date>
+  <be-method [app]="application"></be-method>
+
+</div>

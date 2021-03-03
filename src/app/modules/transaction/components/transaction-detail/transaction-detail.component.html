@@ -1,0 +1,75 @@
+<div *ngIf="transaction$ | async as transaction">
+  <nz-card nzTitle="Transaction Detail">
+
+    <div nz-row>
+      <div nz-col nzSpan="12">amount</div>
+      <div nz-col nzSpan="12">{{transaction.amount}}</div>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">balance</div>
+      <div nz-col nzSpan="12">{{transaction.balance }}</div>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">creation date</div>
+      <div nz-col nzSpan="12">{{transaction.creationDate | date:'dd/MM/yyyy'}}</div>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">entry_date</div>
+      <div nz-col nzSpan="12">{{transaction.entryDate | date:'dd/MM/yyyy'}}</div>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">fees_amount</div>
+      <div nz-col nzSpan="12">{{transaction.feesAmount}}</div>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">interest_amount</div>
+      <div nz-col nzSpan="12">{{transaction.interestAmount}}</div>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">interest_rate</div>
+      <div nz-col nzSpan="12">{{transaction.interestRate}}</div>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">penalty_amount</div>
+      <div nz-col nzSpan="12">{{transaction.penaltyAmount}}</div>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">principal_amount</div>
+      <div nz-col nzSpan="12">{{transaction.principalAmount}}</div>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">principal_balance</div>
+      <div nz-col nzSpan="12">{{transaction.principalBalance}}</div>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">tax_on_fees_amount</div>
+      <div nz-col nzSpan="12">{{transaction.taxOnFeesAmount}}</div>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">tax_on_interest_amount</div>
+      <div nz-col nzSpan="12">{{transaction.taxOnInterestAmount}}</div>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">tax_on_penalty_amount</div>
+      <div nz-col nzSpan="12">{{transaction.taxOnPenaltyAmount}}</div>
+    </div>
+
+    <div nz-row>
+      <div nz-col nzSpan="12">type</div>
+      <div nz-col nzSpan="12">{{transaction.type}}</div>
+    </div>
+
+  </nz-card>
+</div>

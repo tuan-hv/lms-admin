@@ -1,0 +1,52 @@
+.button-footer {
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.button-footer button {
+  margin: 10px;
+}
+
+.otp-input {
+  padding-top: 10px;
+  border-bottom: 1px solid #000;
+  border-right: 0;
+  border-left: 0;
+  border-top: 0;
+}
+
+.otp-dialog {
+  border-radius: 13px;
+  background-color: #fff;
+}
+
+.otp-dialog > .otp-body {
+  padding: 22px;
+}
+
+.timer {
+  width: 75px;
+  height: 75px;
+  padding: 0;
+  padding-top: 25.5px;
+  float: right;
+}
+
+.otp-bottom {
+  height: 60px;
+}
+
+.btn-center {
+  display: block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  padding: 0;
+  margin: 0;
+}
+
+
+.otp-body {
+  padding: 20px;
+}
